@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "redesigned-chatbot", "redesigned-chatbot\redesigned-chatbot.csproj", "{16330875-7D1C-49E6-8C16-ACA6CB80E1EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REPL", "REPL\REPL.csproj", "{092E42FD-5E83-4105-9938-5A85D31AECA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REPLTests", "REPLTests\REPLTests.csproj", "{20ABE5D1-A3AF-4DBE-BE37-70CB88256252}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{16330875-7D1C-49E6-8C16-ACA6CB80E1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16330875-7D1C-49E6-8C16-ACA6CB80E1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16330875-7D1C-49E6-8C16-ACA6CB80E1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092E42FD-5E83-4105-9938-5A85D31AECA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092E42FD-5E83-4105-9938-5A85D31AECA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092E42FD-5E83-4105-9938-5A85D31AECA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092E42FD-5E83-4105-9938-5A85D31AECA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20ABE5D1-A3AF-4DBE-BE37-70CB88256252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20ABE5D1-A3AF-4DBE-BE37-70CB88256252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20ABE5D1-A3AF-4DBE-BE37-70CB88256252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20ABE5D1-A3AF-4DBE-BE37-70CB88256252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
