@@ -14,17 +14,33 @@ namespace REPL.Tests
         [TestMethod()]
         public void AddConversationTest()
         {
-            var cbr = new CBR();
-
             Func<string, string[]> splitter = s => s.Split(null);
 
-            cbr.AddConversation("What is your name", "필떵ㅎ", splitter);
-            cbr.AddConversation("That is pretty name", "Thank you!", splitter);
-            cbr.AddConversation("What are you doing now?", "Well..", splitter);
+            var cbr = new CBR(splitter);
+
+            cbr.AddConversation("what your name", "필떵ㅎ");
+            cbr.AddConversation("that pretty name", "Thank you!");
+            cbr.AddConversation("what you doing now", "Well..");
 
             var what = cbr._corpuses[0];
-            Assert.AreEqual(what.Word, "What");
-            Assert.AreEqual(1 / 4f, what._sentenceIdx[0]);
+            Assert.AreEqual(what.Word, "what");
+            Assert.AreEqual(3, what._sentenceIdx[0].Count);
+        }
+
+        [TestMethod()]
+        public void GetAnswerTest()
+        {
+            Func<string, string[]> splitter = s => s.Split(null);
+
+            var cbr = new CBR(splitter);
+
+            string ans1 = "필떵ㅎ", ans2 = "땡큐!", ans3 = "글세..";
+
+            cbr.AddConversation("what your name", ans1);
+            cbr.AddConversation("that pretty name", ans2);
+            cbr.AddConversation("what you doing now", ans3);
+
+            Assert.AreEqual(ans2, cbr.GetAnswer("what pretty name"));
         }
     }
 }

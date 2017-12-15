@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using kr.ac.kaist.swrc.jhannanum.hannanum;
-using kr.ac.kaist.swrc.jhannanum.comm;
+using HSentence = kr.ac.kaist.swrc.jhannanum.comm.Sentence;
 
 namespace redesigned_chatbot
 {
@@ -27,7 +27,7 @@ namespace redesigned_chatbot
             if (string.IsNullOrEmpty(input)) return new string[] { };
   
             workflow.analyze(input);
-            var result = workflow.getResultOfDocument(new Sentence(0, 0, false));
+            var result = workflow.getResultOfDocument(new HSentence(0, 0, false));
             
             var res = from sentence in result
                       from eojeol in sentence.Eojeols

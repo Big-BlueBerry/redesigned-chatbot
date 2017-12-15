@@ -8,23 +8,26 @@ namespace redesigned_chatbot
 {
     public class Corpus
     {
-        public Dictionary<int, float> _sentenceIdx;
+        public Dictionary<int, Sentence> _sentenceIdx;
         public readonly String Word;
+
+        public float SumOfWeights => _sentenceIdx.Values.Select(v => 1f / v.Count).Sum();
 
         public Corpus(String word)
         {
             Word = word;
-            _sentenceIdx = new Dictionary<int, float>();
+            _sentenceIdx = new Dictionary<int, Sentence>();
         }
 
-        public Corpus(String word, int index, float weight) : this(word)
+        public Corpus(String word, int index, Sentence sentence) : this(word)
         {
-            Update(index, weight);
+            Update(index, sentence);
         }
 
-        public void Update(int index, float weight)
+        public void Update(int index, Sentence sentence)
         {
-            _sentenceIdx.Add(index, weight);
+            _sentenceIdx.Add(index, sentence);
+            sentence.Count++;
         }
     }
 }

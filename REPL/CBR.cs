@@ -10,35 +10,63 @@ namespace REPL
     public class CBR
     {
         public List<Corpus> _corpuses;
-        public List<String> _sentences;
+        public List<Sentence> _sentences;
+
+
+        public Func<string, string[]> ParserDelegate;
+
+        public CBR() : this(Parser.ParseKorean)
+        {
+
+        }
         
-        public CBR()
+        public CBR(Func<string, string[]> parser)
         {
             _corpuses = new List<Corpus>();
-            _sentences = new List<string>();
+            _sentences = new List<Sentence>();
+            ParserDelegate = parser;
         }
 
         public void AddConversation(string a, string b)
-            => AddConversation(a, b, Parser.ParseKorean);
-
-        public void AddConversation(string a, string b, Func<string, string[]> parser)
         {
-            _sentences.Add(a);
-            _sentences.Add(b);
-
-            var a_corpuses = parser(a);
-            var b_corpuses = parser(b);
+            var a_corpuses = ParserDelegate(a);
+            _sentences.Add(new Sentence(b));
 
             foreach(string word in a_corpuses)
             {
-                int index = _sentences.IndexOf(a);
+                int index = _sentences.Count - 1;
+
                 float weight = 1f / a_corpuses.Length;
 
                 if (_corpuses.Any(c => c.Word == word))
-                    _corpuses.Where(c => c.Word == word).First().Update(index, weight);
+                    _corpuses.Where(c => c.Word == word).First().Update(index, _sentences[index]);
                 else
-                    _corpuses.Add(new Corpus(word, index, weight));
+                    _corpuses.Add(new Corpus(word, index, _sentences[index]));
             }
+        }
+
+        public string GetAnswer(string sentence)
+        {
+            var parsed = ParserDelegate(sentence);
+            
+            int maxIndex = -1;
+            float maxWeight = -1;
+            for(int i = 0; i < _sentences.Count; i++)
+            {
+                var sum = parsed
+                    .Select(s => _corpuses.Where(c => c.Word == s).First())
+                    .Where(c => c._sentenceIdx.ContainsKey(i))
+                    .Select(c => 1 / (c._sentenceIdx[i].Count * c.SumOfWeights))
+                    .Sum();
+
+                if (sum > maxWeight)
+                {
+                    maxIndex = i;
+                    maxWeight = sum;
+                }
+            }
+
+            return _sentences[maxIndex].Value;
         }
     }
 }
