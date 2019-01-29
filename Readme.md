@@ -14,8 +14,8 @@
 ## 왓츠 디스
 
 CBR 알고리즘을 사용한 챗봇입니다.
-[C#으로 만들어진 챗봇](https://github.com/phillyai/ChatBot)을 파이썬으로 재작성하였고,
-기존의 구현체에서 부족했던 부분을 많이 채웠습니다. ~~(그럴 예정입니다!)~~
+[C#으로 만들어진 챗봇](https://github.com/phillyai/ChatBot)을 재작성하였고,
+기존의 구현체에서 부족했던 부분을 많이 채웠습니다. ~~(그럴 예정입니다!)~~ 결국 안했습니다. 누군가 해줄거라 믿습니다
 
 알고리즘의 출처는 [ELIZA The Learning Chatbot](http://courses.ischool.berkeley.edu/i256/f06/projects/bonniejc.pdf)
 
